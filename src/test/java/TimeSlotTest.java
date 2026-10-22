@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+// import main.java.TimeSlot;
+
 
 class TimeSlotTest {
 
@@ -47,6 +49,16 @@ class TimeSlotTest {
 
     assertEquals(first, second);
     assertEquals(first.hashCode(), second.hashCode());
+    }
+
+    @Test
+    void slotsWithDifferentTimesAreNotEqual() {
+    TimeSlot original = slot(10, 12);
+
+    assertAll(
+        () -> assertNotEquals(original, slot(11, 12)),
+        () -> assertNotEquals(original, slot(10, 13))
+        );
     }
 
     private static TimeSlot slot(int startHour, int endHour) {
