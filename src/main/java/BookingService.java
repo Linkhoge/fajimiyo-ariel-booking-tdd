@@ -36,7 +36,15 @@ public class BookingService {
 
         for (Booking existingBooking : roomBookings) {
             if (existingBooking.getSlot().overlaps(slot)) {
-            throw new IllegalStateException("Room already has an overlapping booking");
+                throw new IllegalStateException("Room already has an overlapping booking");
+            }
+        }
+
+        List<Booking> userBookings = bookings.findByUser(userId);
+
+        for (Booking existingBooking : userBookings) {
+            if (existingBooking.getSlot().overlaps(slot)) {
+                throw new IllegalStateException("User already has an overlapping booking");
             }
         }
 
@@ -45,6 +53,7 @@ public class BookingService {
 
         return booking;
     }
+
     /** Cancel a user's booking. */
     public void cancel(String userId, String roomId, TimeSlot slot) {
         throw new UnsupportedOperationException("TODO: implement using TDD");
