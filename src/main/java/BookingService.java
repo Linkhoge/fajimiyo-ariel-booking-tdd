@@ -56,7 +56,13 @@ public class BookingService {
 
     /** Cancel a user's booking. */
     public void cancel(String userId, String roomId, TimeSlot slot) {
-        throw new IllegalArgumentException("Booking does not exist");
+        Booking booking = new Booking(userId, roomId, slot);
+
+        if (!bookings.findByUser(userId).contains(booking)) {
+            throw new IllegalArgumentException("Booking does not exist");
+        }
+
+        bookings.delete(booking);
     }
 
     /** A user's bookings, earliest first. */
