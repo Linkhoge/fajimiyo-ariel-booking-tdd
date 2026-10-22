@@ -28,6 +28,10 @@ public class BookingService {
             throw new IllegalArgumentException("Slot must be in the future");
         }
 
+        if (slot.duration().compareTo(MAX_SLOT) > 0) {
+            throw new IllegalArgumentException("Slot cannot be longer than three hours");
+        }
+
         return new Booking(userId, roomId, slot);
     }
 
@@ -40,6 +44,4 @@ public class BookingService {
     public List<Booking> bookingsFor(String userId) {
         throw new UnsupportedOperationException("TODO: implement using TDD");
     }
-
-    
 }
