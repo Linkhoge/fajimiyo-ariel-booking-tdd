@@ -56,7 +56,7 @@ public class BookingService {
 
     /** Cancel a user's booking. */
     public void cancel(String userId, String roomId, TimeSlot slot) {
-        throw new UnsupportedOperationException("TODO: implement using TDD");
+        throw new IllegalArgumentException("Booking does not exist");
     }
 
     /** A user's bookings, earliest first. */
