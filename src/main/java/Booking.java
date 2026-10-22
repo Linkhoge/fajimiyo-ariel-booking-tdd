@@ -14,4 +14,8 @@ public class Booking {
     public String getRoomId() {
         return roomId;
     }
+
+    public TimeSlot getSlot() {
+        return null;
+    }
 }
