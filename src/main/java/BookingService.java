@@ -16,6 +16,12 @@ public class BookingService {
 
     /** Book a room for a user. Returns the new booking. */
     public Booking book(String userId, String roomId, TimeSlot slot) {
+        Room room = rooms.findById(roomId);
+
+        if (room == null) {
+            throw new IllegalArgumentException("Room does not exist");
+        }
+
         return new Booking(userId, roomId, slot);
     }
 
