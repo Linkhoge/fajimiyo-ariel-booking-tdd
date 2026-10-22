@@ -57,4 +57,22 @@ class BookingTest {
 
         assertEquals(first, second);
     }
+
+    @Test
+    void equalBookingsHaveSameHashCode() {
+        TimeSlot firstSlot = new TimeSlot(
+            LocalDateTime.of(2027, 1, 11, 10, 0),
+            LocalDateTime.of(2027, 1, 11, 11, 0)
+        );
+
+        TimeSlot secondSlot = new TimeSlot(
+            LocalDateTime.of(2027, 1, 11, 10, 0),
+            LocalDateTime.of(2027, 1, 11, 11, 0)
+        );
+
+        Booking first = new Booking("Seongryeong", "R1", firstSlot);
+        Booking second = new Booking("Seongryeong", "R1", secondSlot);
+
+        assertEquals(first.hashCode(), second.hashCode());
+    }
 }
