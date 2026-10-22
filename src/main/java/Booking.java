@@ -20,4 +20,19 @@ public class Booking {
     public TimeSlot getSlot() {
         return slot;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof Booking other)) {
+            return false;
+        }
+
+        return java.util.Objects.equals(userId, other.userId)
+            && java.util.Objects.equals(roomId, other.roomId)
+            && java.util.Objects.equals(slot, other.slot);
+    }
 }
