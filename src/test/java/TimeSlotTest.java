@@ -4,9 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-// import main.java.TimeSlot;
-
-
 class TimeSlotTest {
 
     @Test
@@ -49,6 +46,18 @@ class TimeSlotTest {
 
     assertEquals(first, second);
     assertEquals(first.hashCode(), second.hashCode());
+    }
+
+    @Test
+    void toStringIncludesStartAndEnd() {
+    TimeSlot slot = slot(10, 11);
+
+    String description = slot.toString();
+
+    assertAll(
+        () -> assertTrue(description.contains(slot.getStart().toString())),
+        () -> assertTrue(description.contains(slot.getEnd().toString()))
+        );
     }
 
     @Test
