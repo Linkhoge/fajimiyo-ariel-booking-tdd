@@ -1,3 +1,4 @@
+// --- IGNORE ---
 public class Room {
     public Room(String id, String name) {
     }
