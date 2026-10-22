@@ -88,4 +88,17 @@ class BookingTest {
 
         assertNotEquals(first, second);
     }
+
+    @Test
+    void bookingsWithDifferentRoomsAreNotEqual() {
+        TimeSlot slot = new TimeSlot(
+            LocalDateTime.of(2027, 1, 11, 10, 0),
+            LocalDateTime.of(2027, 1, 11, 11, 0)
+        );
+
+        Booking first = new Booking("Seongryeong", "R1", slot);
+        Booking second = new Booking("Seongryeong", "R2", slot);
+
+        assertNotEquals(first, second);
+    }
 }
