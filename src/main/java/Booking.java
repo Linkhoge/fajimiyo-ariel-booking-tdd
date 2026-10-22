@@ -35,4 +35,9 @@ public class Booking {
             && java.util.Objects.equals(roomId, other.roomId)
             && java.util.Objects.equals(slot, other.slot);
     }
+
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(userId, roomId, slot);
+    }
 }
