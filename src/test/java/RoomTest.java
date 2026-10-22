@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RoomTest {
@@ -7,5 +8,12 @@ class RoomTest {
         Room room = new Room("R1", "Room 1");
 
         assertEquals("R1", room.getId());
+    }
+
+    @Test
+    void returnsNameProvidedToConstructor() {
+    Room room = new Room("R1", "Room 1");
+
+    assertEquals("Room 1", room.getName());
     }
 }
