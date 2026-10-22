@@ -22,6 +22,12 @@ public class BookingService {
             throw new IllegalArgumentException("Room does not exist");
         }
 
+        LocalDateTime now = LocalDateTime.now(clock);
+
+        if (slot.getStart().isBefore(now)) {
+            throw new IllegalArgumentException("Slot must be in the future");
+        }
+
         return new Booking(userId, roomId, slot);
     }
 
@@ -34,4 +40,6 @@ public class BookingService {
     public List<Booking> bookingsFor(String userId) {
         throw new UnsupportedOperationException("TODO: implement using TDD");
     }
+
+    
 }
