@@ -4,16 +4,12 @@
 
 | Rule | What was unclear | Ruling | My test for it |
 | ---- | ---------------- | ------ | -------------- |
-| A3 — TimeSlot.overlaps | What should overlaps(null) do? | Not specified in the brief. Identified but not yet confirmed with the lecturer. | Not recorded yet. |
-| TimeSlot.toString | What exact text format should toString() return? | The method is required, but no format is specified. Identified but not yet confirmed with the lecturer. | Not recorded yet. |
-| Room inputs | How should null or blank room IDs and names be handled? | Lecturer allows documented invalid-input assumptions and IllegalArgumentException where an input makes no sense. Exact cases still need to be decided and tested. | Not added yet. |
-| Room format | Is a particular format required for room IDs or names? | No particular format is required. | No format restriction added. |
-| Room IDs | Must room IDs be unique, and what happens if an ID is duplicated? | Lecturer replied "probably" about uniqueness. Duplicate-handling behaviour still needs clarification. | Not added yet. |
+| R6 | Can we cancel a booking that has already started or finished? | No. Lecturer confirmed this in the shared comments. | Not added yet. |
+| R7 | Should bookingsFor include past bookings? | No. Lecturer confirmed this in the shared comments. | Not added yet. |
+| R6 | If a booking has started and we reject the cancellation, which exception should we throw? | Not yet confirmed. | Not added yet. |
+| R5 | Are user IDs case-sensitive? Do "Alice" and "alice" count as the same user when checking overlapping bookings? | Not yet confirmed. | Not added yet. |
 
 ## AI corrections (at least three)
-
-Only record actual AI mistakes caught by tests.
-Intentional failing tests during TDD are not AI corrections.
 
 ### 1 — To complete
 
