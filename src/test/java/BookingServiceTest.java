@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.*;
 
-
 import java.time.*;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
@@ -42,6 +41,13 @@ class BookingServiceTest {
     void bookingPastSlotIsRejected() {
         assertThrows(IllegalArgumentException.class, () -> {
         service.book("alice", "R1", slot(8, 9));
+        });
+    }
+
+    @Test
+    void bookingLongerThanThreeHoursIsRejected() {
+        assertThrows(IllegalArgumentException.class, () -> {
+        service.book("alice", "R1", slot(10, 14));
         });
     }
 }
