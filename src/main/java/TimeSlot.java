@@ -12,12 +12,24 @@ public final class TimeSlot {
         if (!end.isAfter(start)) {
             throw new IllegalArgumentException("end must be after start");
         }
+
         this.start = start;
         this.end = end;
     }
 
-    public LocalDateTime getStart() { return start; }
-    public LocalDateTime getEnd() { return end; }
-    public Duration duration() { return Duration.between(start, end); }
-    public boolean overlaps(TimeSlot other) { return false; }
+    public LocalDateTime getStart() {
+        return start;
+    }
+
+    public LocalDateTime getEnd() {
+        return end;
+    }
+
+    public Duration duration() {
+        return Duration.between(start, end);
+    }
+
+    public boolean overlaps(TimeSlot other) {
+        return false;
+    }
 }
