@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.time.Duration;
 
 public final class TimeSlot {
     public TimeSlot(LocalDateTime start, LocalDateTime end) {
@@ -6,7 +7,12 @@ public final class TimeSlot {
             throw new IllegalArgumentException("start and end must not be null");
         }
         if (!end.isAfter(start)) {
-        throw new IllegalArgumentException("end must be after start");
+            throw new IllegalArgumentException("end must be after start");
         }
     }
+
+    public LocalDateTime getStart() { return null; }
+    public LocalDateTime getEnd() { return null; }
+    public Duration duration() { return null; }
+    public boolean overlaps(TimeSlot other) { return false; }
 }
