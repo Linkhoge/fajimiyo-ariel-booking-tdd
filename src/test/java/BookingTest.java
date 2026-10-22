@@ -75,4 +75,17 @@ class BookingTest {
 
         assertEquals(first.hashCode(), second.hashCode());
     }
+
+    @Test
+    void bookingsWithDifferentUsersAreNotEqual() {
+        TimeSlot slot = new TimeSlot(
+            LocalDateTime.of(2027, 1, 11, 10, 0),
+            LocalDateTime.of(2027, 1, 11, 11, 0)
+        );
+
+        Booking first = new Booking("Seongryeong", "R1", slot);
+        Booking second = new Booking("Bob", "R1", slot);
+
+        assertNotEquals(first, second);
+    }
 }
