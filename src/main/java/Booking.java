@@ -8,4 +8,8 @@ public class Booking {
     public String getUserId() {
         return userId;
     }
+
+    public String getRoomId() {
+        return null;
+    }
 }
