@@ -69,4 +69,10 @@ class BookingServiceTest {
         });
     }
 
+    @Test
+    void cancellingNonexistentBookingIsRejected() {
+        assertThrows(IllegalArgumentException.class, () -> {
+        service.cancel("alice", "R1", slot(10, 11));
+        });
+    }
 }
