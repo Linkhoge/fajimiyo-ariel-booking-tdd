@@ -40,6 +40,15 @@ class TimeSlotTest {
         assertEquals(java.time.Duration.ofMinutes(90), slot.duration());
     }
 
+    @Test
+    void slotsWithSameTimesAreEqualAndHaveSameHashCode() {
+    TimeSlot first = slot(10, 11);
+    TimeSlot second = slot(10, 11);
+
+    assertEquals(first, second);
+    assertEquals(first.hashCode(), second.hashCode());
+    }
+
     private static TimeSlot slot(int startHour, int endHour) {
         return new TimeSlot(LocalDateTime.of(2027, 1, 11, startHour, 0),
                             LocalDateTime.of(2027, 1, 11, endHour, 0));
