@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -98,6 +97,24 @@ class BookingTest {
 
         Booking first = new Booking("Seongryeong", "R1", slot);
         Booking second = new Booking("Seongryeong", "R2", slot);
+
+        assertNotEquals(first, second);
+    }
+
+    @Test
+    void bookingsWithDifferentSlotsAreNotEqual() {
+        TimeSlot firstSlot = new TimeSlot(
+            LocalDateTime.of(2027, 1, 11, 10, 0),
+            LocalDateTime.of(2027, 1, 11, 11, 0)
+        );
+
+        TimeSlot secondSlot = new TimeSlot(
+            LocalDateTime.of(2027, 1, 11, 11, 0),
+            LocalDateTime.of(2027, 1, 11, 12, 0)
+        );
+
+        Booking first = new Booking("Seongryeong", "R1", firstSlot);
+        Booking second = new Booking("Seongryeong", "R1", secondSlot);
 
         assertNotEquals(first, second);
     }
