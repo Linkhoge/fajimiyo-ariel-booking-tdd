@@ -32,9 +32,19 @@ public class BookingService {
             throw new IllegalArgumentException("Slot cannot be longer than three hours");
         }
 
-        return new Booking(userId, roomId, slot);
-    }
+        List<Booking> roomBookings = bookings.findByRoom(roomId);
 
+        for (Booking existingBooking : roomBookings) {
+            if (existingBooking.getSlot().overlaps(slot)) {
+            throw new IllegalStateException("Room already has an overlapping booking");
+            }
+        }
+
+        Booking booking = new Booking(userId, roomId, slot);
+        bookings.save(booking);
+
+        return booking;
+    }
     /** Cancel a user's booking. */
     public void cancel(String userId, String roomId, TimeSlot slot) {
         throw new UnsupportedOperationException("TODO: implement using TDD");
