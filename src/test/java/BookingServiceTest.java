@@ -122,4 +122,14 @@ class BookingServiceTest {
 
         assertEquals(List.of(aliceBooking), service.bookingsFor("alice"));
     }
+
+    @Test
+    void fourthBookingForSameUserIsRejected() {
+        service.book("alice", "R1", slot(10, 11));
+        service.book("alice", "R1", slot(11, 12));
+        service.book("alice", "R1", slot(12, 13));
+
+        assertThrows(IllegalStateException.class, () ->
+            service.book("alice", "R1", slot(13, 14)));
+    }
 }
