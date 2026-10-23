@@ -142,4 +142,15 @@ class BookingServiceTest {
         assertThrows(IllegalArgumentException.class, () ->
             service.book("alice", "R1", slot));
     }
+
+    @Test
+    void bookingExactlyFourteenDaysAheadIsAllowed() {
+        TimeSlot slot = new TimeSlot(
+            LocalDateTime.of(2027, 1, 25, 10, 0),
+            LocalDateTime.of(2027, 1, 25, 11, 0));
+
+    Booking booking = service.book("alice", "R1", slot);
+
+    assertEquals(new Booking("alice", "R1", slot), booking);
+}
 }
