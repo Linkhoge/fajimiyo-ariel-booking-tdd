@@ -20,11 +20,7 @@ public class BookingService {
 
         new RoomMustExist(rooms).check(userId, roomId, slot);
 
-        LocalDateTime now = LocalDateTime.now(clock);
-
-        if (slot.getStart().isBefore(now)) {
-            throw new IllegalArgumentException("Slot must be in the future");
-        }
+        new SlotMustBeInFuture(clock).check(userId, roomId, slot);
 
         if (slot.duration().compareTo(MAX_SLOT) > 0) {
             throw new IllegalArgumentException("Slot cannot be longer than three hours");
