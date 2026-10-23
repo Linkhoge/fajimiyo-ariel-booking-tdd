@@ -20,7 +20,8 @@ public class BookingService {
             new SlotMustNotExceedMaxDuration(),
             new RoomMustNotHaveOverlap(bookings),
             new UserMustNotHaveOverlap(bookings),
-            new UserMustNotExceedBookingLimit(bookings, clock)
+            new UserMustNotExceedBookingLimit(bookings, clock),
+            new SlotMustNotBeTooFarAhead(clock)
         );
     }
 
