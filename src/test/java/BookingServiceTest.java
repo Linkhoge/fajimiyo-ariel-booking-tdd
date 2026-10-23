@@ -153,4 +153,22 @@ class BookingServiceTest {
 
     assertEquals(new Booking("alice", "R1", slot), booking);
 }
+
+    @Test
+    void endedBookingDoesNotCountTowardsBookingLimit() {
+        MemoryRoomRepository rooms = new MemoryRoomRepository();
+        rooms.save(new Room("R1", "Room 1"));
+
+        MemoryBookingRepository bookings = new MemoryBookingRepository();
+        bookings.save(new Booking("alice", "R1", slot(7, 8)));
+
+        BookingService service = new BookingService(rooms, bookings, CLOCK);
+
+        service.book("alice", "R1", slot(10, 11));
+        service.book("alice", "R1", slot(11, 12));
+
+        Booking booking = service.book("alice", "R1", slot(12, 13));
+
+        assertEquals(new Booking("alice", "R1", slot(12, 13)), booking);
+    }
 }
