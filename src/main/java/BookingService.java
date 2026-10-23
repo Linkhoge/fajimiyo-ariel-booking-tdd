@@ -18,9 +18,7 @@ public class BookingService {
     public Booking book(String userId, String roomId, TimeSlot slot) {
         Room room = rooms.findById(roomId);
 
-        if (room == null) {
-            throw new IllegalArgumentException("Room does not exist");
-        }
+        new RoomMustExist(rooms).check(userId, roomId, slot);
 
         LocalDateTime now = LocalDateTime.now(clock);
 
