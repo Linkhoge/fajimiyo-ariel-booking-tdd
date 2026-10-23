@@ -4,8 +4,7 @@
 
 | Rule | What was unclear | Ruling | My test for it |
 | ---- | ---------------- | ------ | -------------- |
-| R6 | If a booking has started and we reject the cancellation, which exception should we throw? | Not yet confirmed. | Not added yet. |
-| R5 | Are user IDs case-sensitive? Do "Alice" and "alice" count as the same user when checking overlapping bookings? | Not yet confirmed. | Not added yet. |
+| R5 | Are user IDs case-sensitive? Do "Alice" and "alice" count as the same user when checking overlapping bookings? | Yes everything is case sensitive | Not added yet. |
 
 ## AI corrections (at least three)
 
