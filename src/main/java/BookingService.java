@@ -26,13 +26,7 @@ public class BookingService {
 
         new RoomMustNotHaveOverlap(bookings).check(userId, roomId, slot);
 
-        List<Booking> userBookings = bookings.findByUser(userId);
-
-        for (Booking existingBooking : userBookings) {
-            if (existingBooking.getSlot().overlaps(slot)) {
-                throw new IllegalStateException("User already has an overlapping booking");
-            }
-        }
+        new UserMustNotHaveOverlap(bookings).check(userId, roomId, slot);
 
         Booking booking = new Booking(userId, roomId, slot);
         bookings.save(booking);
