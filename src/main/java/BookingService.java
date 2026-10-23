@@ -22,9 +22,7 @@ public class BookingService {
 
         new SlotMustBeInFuture(clock).check(userId, roomId, slot);
 
-        if (slot.duration().compareTo(MAX_SLOT) > 0) {
-            throw new IllegalArgumentException("Slot cannot be longer than three hours");
-        }
+        new SlotMustNotExceedMaxDuration().check(userId, roomId, slot);
 
         List<Booking> roomBookings = bookings.findByRoom(roomId);
 
