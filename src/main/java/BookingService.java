@@ -24,13 +24,7 @@ public class BookingService {
 
         new SlotMustNotExceedMaxDuration().check(userId, roomId, slot);
 
-        List<Booking> roomBookings = bookings.findByRoom(roomId);
-
-        for (Booking existingBooking : roomBookings) {
-            if (existingBooking.getSlot().overlaps(slot)) {
-                throw new IllegalStateException("Room already has an overlapping booking");
-            }
-        }
+        new RoomMustNotHaveOverlap(bookings).check(userId, roomId, slot);
 
         List<Booking> userBookings = bookings.findByUser(userId);
 
